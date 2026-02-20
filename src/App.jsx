@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { homeworkTodos } from "./data/homeworkData.js";
 import Homepage from "./components/Homepage.jsx";
 import './App.css';
 
@@ -7,7 +8,7 @@ function App() {
 
   return (
     <>
-      <Homepage />
+      <Homepage homeworkTodos={homeworkTodos}/>
     </>
   )
 }
