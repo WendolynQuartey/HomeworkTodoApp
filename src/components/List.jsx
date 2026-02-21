@@ -4,7 +4,10 @@ export default function List({homeworkTodos}){
       <>
          {homeworkTodos.map(task => (
             <div key={task.id}>
-               {task.assignment} | {task.dueDate}
+               <input type="checkbox"/> {task.assignment} | {task.dueDate} 
+               <button>Delete</button>
+               <br />
+               <button>Edit</button>
             </div>
          ))}
       </>
