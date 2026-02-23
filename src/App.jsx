@@ -6,10 +6,10 @@ import './App.css';
 function taskReducer(todos, action) {
   switch (action.type) {
     case 'EDIT':
-      return todos.map((task) => {
-        task.id === action.id ?
-          { ...task, ...action.updatedTodo } : task
-      });
+      return todos.map(task => 
+        task.id == action.id ?
+          { ...task, ...action.payload } : task
+      );
     case 'DELETE':
       return todos.filter(todo => todo.id !== action.id);
     default:
@@ -28,4 +28,4 @@ function App() {
 }
 
 
-export default App
+export default App;

@@ -5,14 +5,15 @@ export default function EditForm({task, onSave}) {
       assignment: task.assignment,
       dueDate: task.dueDate,
       priority: task.priority,
+      completed: task.completed,
+      class: task.class,
    })
 
    function handleChange(e){
-     const {name, value} = e.target;
-     setEditedTask(prev => ({
-      ...prev, // Keep all the other data
-      [name]: value // Only update the data that's been changed
-     }));
+     setEditedTask({
+      ...editedTask, // Keep all the other data
+      [e.target.name]: e.target.value // Only update the data that's been changed
+     });
    }
 
    function handleSubmit(e){

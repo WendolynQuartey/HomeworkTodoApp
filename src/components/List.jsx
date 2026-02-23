@@ -5,7 +5,7 @@ export default function List({ todos, dispatch }) {
    const [editingTask, setEditingTask] = useState(null)
 
    function handleDelete(id) {
-      console.log('Deleeting tasks with id:', id);
+      console.log('Deleting tasks with id:', id);
       dispatch({ type: 'DELETE', id: id });
    }
 
@@ -14,7 +14,8 @@ export default function List({ todos, dispatch }) {
    }
 
    function handleSaveEdit(taskId, updatedTask) {
-      dispatch({ type: 'EDIT', id: taskId, updatedTodo: updatedTask });
+      dispatch({ type: 'EDIT', id: taskId, payload: updatedTask });
+      console.log('Edited task with:', { taskId, updatedTask });
       setEditingTask(null);
    }
 

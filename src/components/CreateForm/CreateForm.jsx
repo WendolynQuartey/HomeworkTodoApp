@@ -1,6 +1,5 @@
-import AddItem from "./AddItem.jsx"
 
-export default function CreateForm(){
+export default function CreateForm({ todos, dispatch}){
    return (
    <fieldset>
       <legend></legend>
