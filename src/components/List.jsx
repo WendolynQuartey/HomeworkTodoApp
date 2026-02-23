@@ -4,6 +4,10 @@ import EditForm from "./EditForm.jsx"
 export default function List({ todos, dispatch }) {
    const [editingTask, setEditingTask] = useState(null)
 
+   function handleToggle(task){
+      dispatch({type: 'EDIT', id: task.id, payload:{completed: !task.completed}})
+   }
+
    function handleDelete(id) {
       console.log('Deleting tasks with id:', id);
       dispatch({ type: 'DELETE', id: id });
@@ -27,7 +31,7 @@ export default function List({ todos, dispatch }) {
                   <EditForm task={task} onSave={(updatedTask) => handleSaveEdit(task.id, updatedTask)} />
                ) : (
                   <div>
-                     <input type="checkbox" /> {task.assignment} | {task.dueDate} | {task.priority}
+                     <input type="checkbox" checked={task.completed} onChange={() => handleToggle(task)}/> {task.assignment} | {task.dueDate} | {task.priority}
                      <button onClick={() => handleEdit(task)}>Edit</button>
                      <button onClick={() => handleDelete(task.id)}>Delete</button>
                   </div>
