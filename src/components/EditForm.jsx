@@ -10,33 +10,33 @@ export default function EditForm({task, onSave}) {
    function handleChange(e){
      const {name, value} = e.target;
      setEditedTask(prev => ({
-      ...prev,
-      [name]: value
+      ...prev, // Keep all the other data
+      [name]: value // Only update the data that's been changed
      }));
    }
 
-   function handleSubmit(){
+   function handleSubmit(e){
       e.preventDefault();
       onSave(editedTask);
    }
 
    return (
    <fieldset>
-      <legend></legend>
-      <form>
+      <legend>Editing: {task.assignment}</legend>
+      <form onSubmit={handleSubmit}>
          <label>
             Assignment: 
-            <input type="text" value={editedTask.assignment} onChange={handleChange}/>
+            <input type="text" name="assignment" value={editedTask.assignment} onChange={handleChange}/>
          </label>
          <label>
             Due Date
-            <input type="date" value={editedTask.dueDate} onChange={handleChange}/>
+            <input type="date" name="dueDate" value={editedTask.dueDate} onChange={handleChange}/>
          </label>
          <label>
-            <select value={editedTask.priority} onChange={handleChange}>
+            <select  name="priority" value={editedTask.priority} onChange={handleChange}>
                <option value="high">High</option>
                <option value="medium">Medium</option>
-               <option value="low">LOW</option>
+               <option value="low">Low</option>
             </select>
          </label>
          <input type="submit" value="Save" />
