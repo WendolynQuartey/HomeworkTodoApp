@@ -6,9 +6,10 @@ export default function Class({ homeworkTodos }) {
    );
 
    let classList = uniqueClass.map(task => (
-      <div key={task.id}>
+      <div key={task.id} className="classCard">
          <h2>{task.class}</h2>
          <List homeworkTodos={homeworkTodos.filter(t => t.class === task.class)} />
+         <br />
       </div>
    ));
 
