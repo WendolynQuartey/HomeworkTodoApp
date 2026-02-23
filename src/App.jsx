@@ -3,12 +3,23 @@ import { homeworkTodos } from "./data/homeworkData.js";
 import Homepage from "./components/Homepage.jsx";
 import './App.css';
 
+function taskReducer(todos,action){
+   switch (action.type){
+      // case 'EDIT':
+      //    return 
+      case 'DELETE':
+         return todos.filter(todo => todo.id !== action.id);
+      default:
+         return todos;
+   }
+}
+
 function App() {
-  const [count, setCount] = useState(0);
+  const [todos, dispatch] = useReducer(taskReducer, homeworkTodos)
 
   return (
     <>
-      <Homepage homeworkTodos={homeworkTodos}/>
+      <Homepage todos={todos} dispatch={dispatch} />
     </>
   )
 }
