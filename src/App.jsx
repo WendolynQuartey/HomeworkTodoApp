@@ -5,6 +5,8 @@ import './App.css';
 
 function taskReducer(todos, action) {
   switch (action.type) {
+    case 'ADD':
+      return [action.newTask, ...todos]
     case 'EDIT':
       return todos.map(task => 
         task.id == action.id ?
